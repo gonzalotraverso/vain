@@ -1,0 +1,52 @@
+.scroll-arrow-wrap{display: none;}
+
+/* book */
+.book{display: none;}
+
+/* menu */
+.beinggreen{display: none}
+
+
+/* home */
+.home{height: auto; background: url(../img/mobile/Home_1.jpg);}
+.home-slider{display: none}
+.home-relative{padding-top: 72px}
+.home-center{background: url(../img/mobile/home-mob-big.png); width: 722px; height: 541px; position: static; margin: 0; top: auto; left: auto; margin: 0 auto; display: block;}
+.diamond{background: transparent; opacity: 1; position: static; float: left;}
+.diamond a{opacity: 1}
+.top-left-diamond{padding-top: 25px; }
+.top-right-diamond{padding-top: 25px; padding-left: 261px}
+.bottom-left-diamond{padding-top: 31px}
+.bottom-right-diamond{padding-top: 31px; padding-left: 261px}
+
+.coronita-wrap{position: absolute; padding-left: 351px}
+.welcome{position: absolute; /*left: 37.67%; padding-top: 30.88%*/  left: 50% !important; margin-left:-88px !important; padding: 0 !important}
+
+
+/* hotel */
+.hotel-wrapper{position: static; margin: 0}
+.hotel-info-wrap{display: block;}
+
+.slider-arrows{display: none;}
+
+/* services */
+.services{padding-bottom: 50px; background: url(../img/mobile/services-back.jpg);}
+.services-sections{ opacity: 1; float: none;}
+#in-house-wrap{top: 0}
+#external-wrap{bottom: 0}
+
+/* rooms */
+.rooms:after, .rooms:before{content:""; display:table;}
+.rooms:after{clear: both;}
+.rooms{zoom:1;}
+.rooms-wrap{height: 960px}
+.room-wrapper{position: static; opacity: 1 !important; display: block !important; width: 50%; float: left;}
+.room{position: static; width: 100%}
+
+/* rates */
+.rates{height: auto;}
+.rates-wrapper{ position: static; left: auto; margin: 0 auto; height: auto; display: block; }
+
+/* contact */
+.contact{height: 768px;}
+
