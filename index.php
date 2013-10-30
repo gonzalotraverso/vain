@@ -28,6 +28,7 @@ $detect = new Mobile_Detect;
          <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     </head>
     <body>
+        esto es un test
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
