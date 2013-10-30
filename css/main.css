@@ -874,8 +874,6 @@ footer{max-height: 221px; width: 100%; background: #1a1a1b; border-top: 3px #7f2
     footer{display: none;}
 }
 
-
-
 @media (max-width: 412px){
     /* home fonts */
     .diamond p{font-size: 10px}
