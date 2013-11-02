@@ -19,9 +19,10 @@ $detect = new Mobile_Detect;
         <link rel="icon" href="img/icon.ico" type="image/x-icon">
         <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
 <?php if ($detect->isMobile()): ?>
         <link rel="stylesheet" href="css/main.mob.css">
+    <?php else: ?>
+        <link rel="stylesheet" href="css/main.css">
 <?php endif ?>
         <link rel="stylesheet" href="css/jquery.fancybox.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
@@ -34,7 +35,11 @@ $detect = new Mobile_Detect;
 
         <!-- Add your site or application content here -->
         <div class="preloader-wrapper"><img src="img/preloader.png"></div>
+<?php if (!$detect->isMobile()): ?>
+
         <a href="https://www.thebookingbutton.co.uk/properties/vainboutiquedirect" class="book"><span class="book-hover"></span><span class="book-clicked"></span></a>
+<?php endif ?>
+        
         <header>
             <div class="header-back">
                 <div class="header-wrap">
