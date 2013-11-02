@@ -35,9 +35,12 @@ $detect = new Mobile_Detect;
 
         <!-- Add your site or application content here -->
         <div class="preloader-wrapper"><img src="img/preloader.png"></div>
-        <?php if (!$detect->isMobile()): ?>
+        
+<?php if (!$detect->isMobile()): ?>
+
         <a href="https://www.thebookingbutton.co.uk/properties/vainboutiquedirect" class="book"><span class="book-hover"></span><span class="book-clicked"></span></a>
-        <?php endif ?>
+<?php endif ?>
+        
         <header>
             <div class="header-back">
                 <div class="header-wrap">
