@@ -18,11 +18,67 @@ $(document).ready(function(){
 		if($option.hasClass("opt-bottom"))$option.css({top: (optTop-250)+'px', left: (optLeft-250)+'px', opacity: 1});
 	});
 
-
+	/* menu highlight */
+	$(".section").waypoint(function(direction){
+		var id = $(this).attr("id");
+		var $highlight = $("#mobile-menu-highlight");
+		switch (id){
+			case "section-1":
+				$highlight.html("<h2>HOME</h2>");
+				break;
+			case "section-2":
+				if(direction == 'down'){
+					$highlight.html("<h2>HOTEL</h2>");
+				}else{
+					$highlight.html("<h2>HOME</h2>");
+				}
+				break;
+			case "section-3":
+				if(direction == 'down'){
+					$highlight.html("<h2>SERVICES</h2>");
+				}else{
+					$highlight.html("<h2>HOTEL</h2>");
+				}
+				break;
+			case "section-4":
+				if(direction == 'down'){
+					$highlight.html("<h2>EVENTS</h2>");
+				}else{
+					$highlight.html("<h2>SERVICES</h2>");
+				}
+				break;
+			case "section-5":
+				if(direction == 'down'){
+					$highlight.html("<h2>ROOMS</h2>");
+				}else{
+					$highlight.html("<h2>EVENTS</h2>");
+				}
+				break;
+			case "section-6":
+				if(direction == 'down'){
+					$highlight.html("<h2>RATES</h2>");
+				}else{
+					$highlight.html("<h2>ROOMS</h2>");
+				}
+				break;
+			case "section-7":
+				if(direction == 'down'){
+					$highlight.html("<h2>PRESS/CONTACT</h2>");
+				}else{
+					$highlight.html("<h2>RATES</h2>");
+				}
+				break;
+		}
+	});
 
 	/* all */
 	function resizeAll(){
 		var winW = parseInt($(window).width());
+
+		// header
+
+		$('#mobile-menu-highlight').width(winW-128);
+
 		// HOME
 		var homeW = parseInt($(".home-center").width());
 		if(winW <= 722){
@@ -44,8 +100,8 @@ $(document).ready(function(){
 		$logo.css('cssText', "top:"+logoT+"px !important");
 
 		/* rooms */
+		var $roomsWrap = $('.rooms-wrap');
 		if(winW > 640){
-			var $roomsWrap = $('.rooms-wrap');
 			var roomsW = parseInt($('.rooms-wrap').width());
 			$roomsWrap.height(roomsW);
 		}else{

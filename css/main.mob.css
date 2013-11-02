@@ -35,6 +35,12 @@
 #in-house-wrap{top: 0}
 #external-wrap{bottom: 0}
 
+/* events */
+.events{height: 768px}
+.events-items{display: block; opacity: 1; top: 0; position: static; float: left; width: 33.33% !important; min-width: none; max-height: none; height: 100%}
+.events-items>div{width: 100% !important}
+.events-gallery ul li{width: 100% !important}
+
 /* rooms */
 .rooms:after, .rooms:before{content:""; display:table;}
 .rooms:after{clear: both;}
