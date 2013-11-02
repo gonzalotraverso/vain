@@ -511,11 +511,11 @@ nav li p:hover .menu-diamond{opacity: 1}
 .events{height: 768px; background: url(../img/events-back.jpg) no-repeat center top;}
 .events-wrap{width: 960px; height: 100%; position: relative; margin: 0 auto}
 
-.events-items{  height: 100%;  overflow: hidden; cursor: pointer; width: 33.33%}
+.events-items{  height: 100%;  overflow: hidden; cursor: pointer; width: 33.33%; float: left;}
 .active-event{cursor: auto}
 .events-items>div{position: relative; width: 100%}
 #corporate-wrap{background: url(../img/corporate-back.jpg) no-repeat center top; }
-#social-wrap{background: url(../img/social-back.jpg) no-repeat center top; left: 320px; width: 320px}
+#social-wrap{background: url(../img/social-back.jpg) no-repeat center top; }
 #wedding-wrap{background: url(../img/weddings-back.jpg) no-repeat center top; right: 0; }
 
 .events-gallery{width: 319px; height: 63%; overflow: hidden;}
