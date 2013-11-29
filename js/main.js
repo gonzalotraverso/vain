@@ -31,6 +31,8 @@ $(document).ready(function(){
 			}
 		});
 
+
+		
 		
 
 
@@ -87,8 +89,15 @@ $(document).ready(function(){
 
 
 	$('.services').waypoint(function(){ // services effects
+		$(".services-sections").show();
 		$('#in-house-wrap').animate({'top': 0, 'opacity': 1}, 500);
 		$('#external-wrap').animate({'bottom': 0, 'opacity': 1}, 500);
+		if(!$(".services-sections").hasClass("services-on")){
+			$(".services-sections").mCustomScrollbar({
+	                    theme: "dark-thin"
+	                });
+		}
+		$(".services-sections").addClass("services-on")
 	});
 
 	$('.events').waypoint(function(){ // events effects
@@ -126,23 +135,23 @@ var Parallax = {
 			}
 		},
 		fn: {
-			setHeights: function() {
-				//$('div.section').height($(window).height());
-			},
+			
 			onSiteScroll: function() {
 				var section = null;
-				$('body').mousewheel(function(event, delta) {
-					event.preventDefault();
-					if(!$('body').is(':animated')){
-						if (delta < 0) {
-							section = ($('.slided').length) ? $('.slided') : $('#section-1');
-							var next = (section.next().length) ? section.next() : section;
-							Parallax.utils.doSlide(next);
-						}
-						else if(delta > 0) {
-							section = ($('.slided').length) ? $('.slided') : $('#section-1');
-							var prev = (section.prev().length) ? section.prev() : $('#section-1');
-							Parallax.utils.doSlide(prev);
+				$('body').on('mousewheel', function(event, delta) {
+					if ($('.no-scroll:hover').length == 0) {
+						event.preventDefault();
+						if(!$('body').is(':animated')){
+							if (delta < 0) {
+								section = ($('.slided').length) ? $('.slided') : $('#section-1');
+								var next = (section.next().length) ? section.next() : section;
+								Parallax.utils.doSlide(next);
+							}
+							else if(delta > 0) {
+								section = ($('.slided').length) ? $('.slided') : $('#section-1');
+								var prev = (section.prev().length) ? section.prev() : $('#section-1');
+								Parallax.utils.doSlide(prev);
+							}
 						}
 					}
 				});
@@ -162,8 +171,6 @@ var Parallax = {
 	
 	Parallax.init();
 	
-
-
 
 
 
@@ -229,6 +236,47 @@ var Parallax = {
 
 	$('.hotel').waypoint(function(){
 		$('.hotel-info-wrap').fadeIn();
+	});
+	/* END */
+	/*******************************************************************************/
+	/* location popup */
+	var noPoi = [
+            {
+                featureType: "poi.business",
+                stylers: [
+                  { visibility: "off" }
+                ]   
+              }
+            ];
+
+
+	function initializeMap() {
+            
+            var loc_map = document.getElementById('location-map');
+            var map_options = {
+              center: new google.maps.LatLng(-34.5848,-58.426303),
+              zoom: 15,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              styles: noPoi
+            }
+            var map = new google.maps.Map(loc_map, map_options)
+            var iconBase = 'http://www.wearegrossa.com/vain/img/';
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(-34.5848,-58.426303),
+              map: map,
+              icon: {url: iconBase + 'marker.png', anchor: new google.maps.Point(16, 34)},
+              //shadow: iconBase + 'schools_maps.shadow.png'
+            });
+          }
+
+	$("#location").on('click', function(){
+		$('#location-popup-wrapper').fadeIn(function(){
+			initializeMap();
+		});
+	});
+
+	$("#location-popup-wrapper").find(".loc-cross").on('click', function(){
+		$("#location-popup-wrapper").fadeOut();
 	});
 
 	/* END */
@@ -327,11 +375,13 @@ var Parallax = {
 			}
 		}else{
 			$active.fadeOut();
-			$active.removeClass("active-slide")
-			$gallery.load("galleries.html "+"#hotel #hotel-"+item+" ul", function(){ // load gallery
+			$active.removeClass("active-slide");
+			console.log($gallery);
+			$gallery.load("galleries.php "+"#hotel #hotel-"+item+" ul", function(){ // load gallery
 				$gallery.animate({"margin-left":0}).addClass("active-slide").fadeIn();
-				$option.addClass("loaded")
-				$option.children("ul li img").each(function(){
+				$option.addClass("loaded");
+				console.log(item);
+				$gallery.find("img").each(function(){
 					var $cont = $(this).parents('li');
 					$(this).dilatation({container: $cont});
 					
@@ -389,10 +439,20 @@ var Parallax = {
 
 	$(".events-items").click(function(){
 		var $active = $(".active-event");
+
 		$active.children(".events-gallery").stop().animate({top: $active.children(".events-gallery").data("top")});
-		$active.children(".events-item-info").stop().animate({bottom: $active.children(".events-item-info").data("bottom")});
+		$active.children(".events-item-info").stop().animate({bottom: $active.children(".events-item-info").data("bottom")}, function(){
+			$active.find(".events-info").mCustomScrollbar("destroy");
+		});
 		$active.removeClass("active-event");
 		$(this).addClass("active-event");
+		var evH = $(this).find(".events-item-info").height();
+		$(this).find(".events-info").css({height: evH-50});
+		$(this).find(".events-info").mCustomScrollbar({
+            theme: "light-thin"
+        });
+
+
 		
 		var $evG = $(this).children(".events-gallery");
 		var $evI = $(this).children(".events-item-info");
@@ -531,10 +591,46 @@ var Parallax = {
 	});
 
 
+	/* END */
+	/*******************************************************************************/
+	/* FIXED LOCATION */
+	var $loc = $("#fixed-location"); 
+	var locW = $loc.outerWidth();
+	var $arrow = $("#fixed-location-arrow");
+	$arrow.css({"background-position": "center bottom"});
+	$loc.css({left: -locW+50});
+	$('#fixed-location-right').on("click", function(){
+		var $loc = $("#fixed-location"); 
+		var locW = $loc.outerWidth();
+		var $arrow = $("#fixed-location-arrow");
+		if($loc.hasClass("open")){
+			$loc.animate({left: -locW+50})
+			$arrow.css({"background-position": "center bottom"});
+			$loc.removeClass("open")		
+		}else{
+			$loc.animate({left: 0});
+			$arrow.css({"background-position": "center top"});
+			$loc.addClass("open")
+		}
+		
+	});
 
 	/* END */
+	/*******************************************************************************/
+	/* CANCELATION */
+	$("#cancelation").click(function(){
+		$("#cancelation-policy").fadeIn();
+	});
 
-	/**/
+	$("#cancelation-policy").find(".loc-cross").on('click', function(){
+		$("#cancelation-policy").fadeOut();
+	});
+
+
+	/* END */
+	/*******************************************************************************/
+
+
 
 
 

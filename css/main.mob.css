@@ -279,7 +279,7 @@ header{height: 98px; background: #fff; position: fixed; top: 0px;left: 0px; back
 .header-logo .crown{cursor: pointer;}
 .crown{height: 22px; width: 46px; background: url(../img/7up.png) no-repeat -278px 0;}
 .crown:hover{background-position: -278px -22px}
-.mobile-menu{display: none; height: 22px; width: 32px; background: url(../img/mobile/mirinda.png) no-repeat -46px 0; float: right;}
+.mobile-menu{display: none; height: 22px; width: 32px; background: url(../img/mobile/mirinda.png) no-repeat -46px 0; float: right; cursor: pointer;}
 nav{float: left; font-size: 12px;}
 nav li{float: left; padding: 0 30px; }
 nav li p{ color: #5f5c5e;  -moz-transition:color 0.2s; -webkit-transition:color 0.2s; -o-transition:color 0.2s; transition:color 0.2s; cursor: pointer; position: relative;}
@@ -405,53 +405,53 @@ nav li p:hover .menu-diamond{opacity: 1}
 }  
 
 .hotel-gallery{float: right; position: relative; width: 517px}
-.slider-options{position: absolute; height: 146px; width: 146px; opacity: 0; }
+.slider-options{position: absolute; height: 146px; width: 146px;  }
 .slider-options, .slider-options .options-dark{background: url(../img/fanta.png);}
 .options-relative{position: relative; width: 100%; height: 100%}
 .options-dark{ width: 100%; height: 100%; }
 .options-diamond{background: url(../img/options-diamond.png) no-repeat center center;   position: absolute; display: none; height: 125px; width: 125px; top: 11px; left: 11px}
-.slider-option{position: absolute;  cursor: pointer; opacity: 0; z-index: 10; background: url(../img/7up.png) no-repeat}
+.slider-option{position: absolute;  cursor: pointer;  z-index: 10; background: url(../img/7up.png) no-repeat}
 
 
 
-#opt-fachade{height: 39px; width: 50px;  background-position: -21px -282px; top: -196px; left: 446px}
+#opt-fachade{height: 39px; width: 50px;  background-position: -21px -282px; top: 54px; left: 196px}
 #opt-fachade:hover{background-position:  -21px -321px}
 .opt-fachade-visited{background-position: -21px -360px !important}
-#opt-leisure{height: 57px; width: 42px;  background-position: -71px -282px; top: -131px; left: 376px}
+#opt-leisure{height: 57px; width: 42px;  background-position: -71px -282px; top: 119px; left: 126px}
 #opt-leisure:hover{background-position:  -71px -339px}
 .opt-leisure-visited{background-position: -71px -396px !important}
-#opt-rooms{height: 37px; width: 40px;  background-position: -161px -282px; top: -47px; left: 303px}
+#opt-rooms{height: 37px; width: 40px;  background-position: -161px -282px; top: 203px; left: 53px}
 #opt-rooms:hover{background-position:  -161px -319px}
 .opt-rooms-visited{background-position:  -161px -356px !important}
-#opt-bar{height: 45px; width: 21px;  background-position: 0 -282px; top: 598px; left: 313px}
+#opt-bar{height: 45px; width: 21px;  background-position: 0 -282px; top: 348px; left: 63px}
 #opt-bar:hover{background-position:  0 -327px}
 .opt-bar-visited{background-position:  0 -372px !important}
-#opt-patio{height: 65px; width: 48px;  background-position: -113px -282px; top: 662px; left: 373px}
+#opt-patio{height: 65px; width: 48px;  background-position: -113px -282px; top: 412px; left: 123px}
 #opt-patio:hover{background-position:  -113px -347px}
 .opt-patio-visited{background-position:  -113px -412px !important}
-#opt-terrace{height: 42px; width: 48px; background-position: -201px -282px; top: 747px; left: 447px}
+#opt-terrace{height: 42px; width: 48px; background-position: -201px -282px; top: 497px; left: 197px}
 #opt-terrace:hover{background-position:  -201px -324px}
 .opt-terrace-visited{background-position:  -201px -366px !important}
 
 
 
-#options-fachade{left: 398px; top: -250px; background-position: 0 0}
+#options-fachade{left: 148px; top: 0px; background-position: 0 0}
 #options-fachade .options-dark{background-position: 0 -146px}
 
-#options-leisure{top: -176px; left: 324px; background-position: -146px 0}
+#options-leisure{top: 74px; left: 74px; background-position: -146px 0}
 #options-leisure .options-dark{background-position: -146px -146px}
 
 
-#options-rooms{top: -102px; left: 250px; background-position: -292px 0}
+#options-rooms{top: 148px; left: 0px; background-position: -292px 0}
 #options-rooms .options-dark{background-position: -292px -146px}
 
-#options-bar{top: 549px; left: 250px;  background-position: -438px 0}
+#options-bar{top: 299px; left: 0px;  background-position: -438px 0}
 #options-bar .options-dark{background-position: -438px -146px}
 
-#options-patio{top: 623px; left: 324px; background-position: -584px 0}
+#options-patio{top: 373px; left: 74px; background-position: -584px 0}
 #options-patio .options-dark{background-position: -584px -146px}
 
-#options-terrace{top: 697px; left: 398px; background-position: -730px 0}
+#options-terrace{top: 447px; left: 148px; background-position: -730px 0}
 #options-terrace .options-dark{background-position: -730px -146px}
 
 
@@ -499,6 +499,24 @@ nav li p:hover .menu-diamond{opacity: 1}
 @media (max-height: 918px){
     .services .scroll-arrow-wrap{top: auto !important; bottom: 30px !important}
 }
+
+
+
+#location{height: 33px; line-height: 33px; width: 289px; border: 1px #fff solid; clear: both; padding: 0 12px; cursor: pointer;}
+#location img{float: left; padding-top: 8px}
+#location p{line-height: 33px; padding-left: 19px; font-weight: bold; font-size: 14px}
+
+#location-popup-wrapper{position: absolute; width: 858px; height: 564px; z-index: 500; top: 30px; display: none;}
+#loc-pop-cross{width: 100%; height: 31px}
+#loc-cross{cursor: pointer; width: 31px; height: 100%; float: right; background: #fff url(../img/location-cross.jpg) no-repeat center center}
+#location-popup-content{background: #fff; padding: 8px}
+#location-map{width: 842px; height: 358px}
+#location-info{padding-top: 10px; height: 124px; font-size: 12px; font-weight: 300; color: #2e2e2e; }
+#location-info h2{font-weight: bold; font-size: 14px}
+#location-direction{float: left; border-right: 1px #ebebeb solid; width: 637px; padding-right: 45px}
+.location-diamond{height: 13px; width: 18px; display: block; background: url(../img/location-diamond.jpg) no-repeat left top; float: left; line-height: 19px}
+#location-gps{padding-left: 10px; float: left;}
+#location-bottom{height: 25px; width: 27px; background: url(../img/location-triangle.png) no-repeat; margin-left: 20px}
 
 
 
@@ -751,6 +769,12 @@ footer{max-height: 221px; width: 100%; background: #1a1a1b; border-top: 3px #7f2
     .slider-padding{float: none; left: 74px}
     .hotel-padding{padding: 30px 0 100px 0}
 
+
+    /* hay q ver q onda con estos mobile */
+    #location{display: none;}
+
+    #location-popup-wrapper{display: none;}
+
     /* events */
     .events-wrap{width: 100%}
     .events-gallery, .events-item-info{float: left;height: 100%; width: 50% }
@@ -819,7 +843,7 @@ footer{max-height: 221px; width: 100%; background: #1a1a1b; border-top: 3px #7f2
     /* header */
     header{height: 41px; overflow: hidden;}
     header, .header-wrap{ width: 100%}
-    .header-wrap{height: 480px; width: 100%}
+    .header-wrap{height: 100%; width: 100%}
     .header-logo{height: 41px; background: #fff; padding: 0; width: 100% ;}
     .header-logo-wrapper{padding: 9px 25px}
     .header-logo-wrapper .crown{width: 46px; height: 22px; background: url(../img/mobile/mirinda.png);}
@@ -827,6 +851,14 @@ footer{max-height: 221px; width: 100%; background: #1a1a1b; border-top: 3px #7f2
     .mobile-menu{display: block}
 
     #mobile-menu-highlight{display: block;}
+
+    .language-options{ width: 100%; height: 24px; background: #db217e; padding: 0}
+    .language-options a{float: left;}
+
+    nav{background: #1f1f1f}
+    nav ul li{height: 67px; border-top: 1px #303030 solid; border-bottom: 1px #1a1a1a solid; width: 100%}
+    nav ul li p{height: 100%; line-height: 67px}
+    .menu-diamond{top: 50%; margin-top: -3px}
 
     .beinggreen{display: none}
 
