@@ -751,7 +751,6 @@ Every room in Vain is different but they all share the original architecture of 
         <script src="js/plugins.js"></script>
 
 <?php if (!$detect->isMobile()): ?>
-        <script src="js/jquery.mousewheel.min.js"></script>
         <script src="js/main.js"></script>
 <?php else: ?>
         <script src="js/mobile.js"></script>
