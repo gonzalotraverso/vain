@@ -320,6 +320,9 @@ Every room in Vain is different but they all share the original architecture of 
                                                 <div id="slider-patio" class="option-gallery">
                                                     
                                                 </div>
+                                                <div id="slider-terrace" class="option-gallery">
+                                                    
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
