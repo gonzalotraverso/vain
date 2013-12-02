@@ -23,7 +23,7 @@
 		resizeSecs: function(){
 			var self = this;
 			$.each(this.$sections, function(i,v){
-				var $section = $(this)
+				var $section = $(this);
 				var minH = parseInt($section.css("min-height"));
 				var maxH = parseInt($section.css("max-height"));
 				if(self.winHeight >= minH){
@@ -42,8 +42,167 @@
 	};
 
 
+	/* HOTEL WAYPOINTS EFFECTS/ */
+	var HotelEffects = function(){
+		this.$hotel = jQuery('.hotel');
+		this.$sliderOpts = this.$hotel.find('.slider-options');
+		this.$sliderOpt = this.$hotel.find('.slider-option');
+		this.$info = this.$hotel.find('.hotel-info-wrap');
+		this.$activeOpt = this.$sliderOpt.siblings(".active-opt");
+		this.$activeOpts = this.$sliderOpts.siblings("#"+this.$activeOpt.data("rec"));
+		this.$galleries = this.$hotel.find('.option-gallery');
+		this.$activeSlide = this.$galleries.siblings(".active-slide");
+		this.$arrLeft = this.$hotel.find('#slider-arrow-left');
+		this.$arrRight = this.$hotel.find('#slider-arrow-right');
+		this.init();
+	};
+
+	HotelEffects.prototype = {
+		init: function(){
+			this.setUpGallery();
+			this.bindEvents();
+		},
+		bindEvents: function(){
+			var self = this;
+			this.$hotel.waypoint(function(){
+				self.doAnimations();
+			});
+			this.$sliderOpt.on({
+				mouseenter: function () {
+					self.optHover('on', $(this));
+			    },
+			    mouseleave: function () {
+					self.optHover('off', $(this));
+			    }
+			});
+			this.$arrLeft.on('click', function(){
+				self.nextSlide('left');
+			});
+			this.$arrRight.on('click', function(){
+				self.nextSlide('right');
+			});
+			this.$sliderOpt.on('click', function(){
+				self.changeGallery($(this));
+			});
+
+		},
+		doAnimations: function(){
+			var self = this;
+			this.$info.fadeIn();
+			this.$sliderOpts.each(function(){
+				var $option = $(this);
+				var optLeft = parseInt($option.data('left'));
+				var optTop = parseInt($option.data('top'));
+				var dur = $option.data('duration');
+				$option.animate({'left': optLeft, 'top': optTop, 'opacity':1}, dur);
+			});
+			this.$sliderOpt.each(function(){
+				var $option = $(this);
+				var optLeft = parseInt($option.css('left'));
+				var optTop = parseInt($option.css('top'));
+				var dur = $option.data('duration');
+				if($option.hasClass("opt-top"))
+					$option.animate({top: (optTop+250)+"px", left: (optLeft-250)+"px", opacity: 1}, dur);
+				else
+					$option.animate({top: (optTop-250)+"px", left: (optLeft-250)+"px", opacity: 1}, dur);
+			});
+		},
+		setUpGallery: function(){
+			var self = this;
+
+			this.$activeOpts.find('.options-dark').css({opacity: 0}); // gives style to default active option
+			this.$activeOpts.find('.options-diamond').show();
+			var actId = this.$activeOpt.attr("id");
+			this.$activeOpt.addClass(actId+"-visited");
+
+			this.$activeSlide.show();
+			this.$galleries.each(function(){
+				$(this).find('img').each(function(){
+					var $cont = $(this).parents('li');
+					$(this).dilatation({container: $cont});
+				});
+				var numSlides = $(this).find("li").length;
+				$(this).css({'width': numSlides*443});
+			});
+
+			$(".fancybox").fancybox();
+		},
+		optHover:function(e, elem){
+			if(!elem.hasClass("active-opt")){
+				var id = elem.data("rec");
+				var $opts = this.$sliderOpts.siblings("#"+id);
+				if(e == 'on'){
+					$opts.find('.options-dark').stop().animate({opacity: 0});
+					$opts.find('.options-diamond').fadeIn();
+				}else{
+					$opts.find('.options-dark').stop().animate({opacity: 1});
+					$opts.find('.options-diamond').fadeOut();
+				}
+			}
+		},
+		nextSlide: function(dir){
+			var marL = parseFloat(this.$activeSlide.css("margin-left"));
+			var slideLength = ((this.$activeSlide.find("li").length)*(-443))+443;
+			if(dir == 'left' && marL < 0)
+				this.$activeSlide.animate({"margin-left": marL+443}, 500, 'easeInOutQuart');
+			else if(dir == 'right' && marL !== slideLength)
+				$(".active-slide").animate({"margin-left": marL-443}, 500, 'easeInOutQuart');
+		},
+		changeGallery: function(elem){
+			var $option = elem;
+			var $sel = this.$sliderOpts.siblings("#"+$option.data("rec"));
+			if(!$option.hasClass("active-opt")){ //if its not the selected option
+				var actId = this.$activeOpt.attr("id");
+				this.$activeOpt.removeClass(actId+"-visited");
+				this.$activeOpts.find('.options-dark').stop().animate({opacity: 1}); // do mouse out effects for previous active option
+				this.$activeOpts.find('.options-diamond').fadeOut();
+				$sel.find('.options-dark').css({opacity: 0}); // keep mouse over effects on selected option
+				$sel.find('.options-diamond').show();
+				this.$activeOpt.removeClass("active-opt");
+				$option.addClass("active-opt");
+				this.$activeOpt = $option;
+				$(".active-opt").addClass($(".active-opt").attr("id")+"-visited");
+				this.$activeOpts = $sel;
+			}
+
+			var item = $option.data("rec").substr(8);
+			var $gallery = this.$galleries.siblings("#slider-"+item);
+			if($option.hasClass("loaded")){ // if gallery is already loaded
+				if($gallery.attr("id") !== this.$activeSlide.attr("id")){ // if selected is not active gallery
+					this.$activeSlide.fadeOut();
+					this.$activeSlide.removeClass("active-slide");
+					$gallery.animate({"margin-left":0}).addClass("active-slide").fadeIn();
+					this.$activeSlide = $gallery;
+				}
+			}else{
+				console.log("entro");
+				this.$activeSlide.fadeOut();
+				this.$activeSlide.removeClass("active-slide");
+				$gallery.load("galleries.php "+"#hotel #hotel-"+item+" ul", function(){ // load gallery
+					$gallery.animate({"margin-left":0}).addClass("active-slide").fadeIn();
+					this.$activeSlide = $gallery;
+					$option.addClass("loaded");
+					$gallery.find("img").each(function(){
+						var $cont = $(this).parents('li');
+						$(this).dilatation({container: $cont});
+						
+					});
+					var numSlides = $gallery.find("li").length;
+					$gallery.css({'width': numSlides*443});
+				});
+
+			}
+		}
+	};
+
+
+
+
+
+
 	$(document).ready(function(){
 		var res = new Resizer();
+		var hotel = new HotelEffects();
 
 		/* Home Slider */
 
@@ -55,68 +214,9 @@
 		});
 
 
-		/* Resize sections *//*
-		function resizeSecs(){
-			var height = $(window).height();
-			var width = $(window).width();
-			$(".article").each(function(index, value){
-				var minH = $(this).css('min-height');
-				minH = minH.replace('px', '');
-				var maxH = $(this).css('max-height');
-				maxH = maxH.replace('px', '');
-				if(height >= minH){
-					$(this).children('.article-padding').height(height-83);
-				}else{
-					$(this).children('.article-padding').height(minH-83);
-				}
-				if( (minH < height ) && (maxH > height ) ){
-					$(this).height(height);
-					if($(this).hasClass("home")){
-						$(".bx-wrapper").height(height);
-					}
-				}
-			});
-
-
-			
-			
-
-
-		}
-
-		resizeSecs();
-
-		$(window).resize(function(){
-			resizeSecs();
-		});
-
 		/* END */
 		/*******************************************************************************/
 		/* Parallax effects */
-		
-
-		$('.slider-options').each(function(index, value){ // hotel effects
-			var $option = $(this);
-			var optLeft = parseInt($option.data('left'));
-			var optTop = parseInt($option.data('top'));
-			var dur = $option.data('duration');
-			$('.hotel').waypoint(function(){
-				$option.animate({'left': optLeft+"px", 'top': optTop+"px", 'opacity':1}, dur);
-			});
-		});
-
-		$('.slider-option').each(function(index, value){ // hotel effects
-			var $option = $(this);
-			var optLeft = parseInt($option.css('left'));
-			var optTop = parseInt($option.css('top'));
-			var dur = $option.data('duration');
-			$('.hotel').waypoint(function(){
-				if($option.hasClass("opt-top"))$option.animate({top: (optTop+250)+'px', left: (optLeft-250)+'px', opacity: 1}, dur);
-				if($option.hasClass("opt-bottom"))$option.animate({top: (optTop-250)+'px', left: (optLeft-250)+'px', opacity: 1}, dur);
-			});
-		});
-
-
 
 
 
@@ -264,13 +364,7 @@
 		});
 
 
-		/* END */
-		/*******************************************************************************/
-		/* Waypoint fade animations */
-
-		$('.hotel').waypoint(function(){
-			$('.hotel-info-wrap').fadeIn();
-		});
+		
 		/* END */
 		/*******************************************************************************/
 		/* location popup */
@@ -313,119 +407,8 @@
 			$("#location-popup-wrapper").fadeOut();
 		});
 
-		/* END */
-		/*******************************************************************************/
-		/* SLIDER */
-
 
 		
-
-
-
-		/* slider options */
-		var $act = $("#"+$(".active-opt").data("rec"));
-		$act.children().children('.options-dark').css({opacity: 0}); // gives tyle to default active option
-		$act.children().children('.options-diamond').show();
-		var actId = $(".active-opt").attr("id");
-		$(".active-opt").addClass(actId+"-visited");
-
-		$('.slider-option').hover(function(){ // slider options hover effects
-			if(!$(this).hasClass("active-opt")){
-				var id = $(this).data("rec");
-				$("#"+id).children().children('.options-dark').stop().animate({opacity: 0});
-				$("#"+id).children().children('.options-diamond').fadeIn();
-			}
-		}, function(){
-			if(!$(this).hasClass("active-opt")){
-				var id = $(this).data("rec");
-				$("#"+id).children().children('.options-dark').stop().animate({opacity: 1});
-				$("#"+id).children().children('.options-diamond').fadeOut();
-			}
-		});
-
-		
-
-		/* slidershow */
-
-		$(".option-gallery").hide();
-		$(".hotel-slider").load(function(){
-
-		});
-		$(".active-slide").show();
-
-		$(".option-gallery ul li img").each(function(){
-			var $cont = $(this).parents('li');
-			$(this).dilatation({container: $cont});
-		});
-
-
-
-		$(".option-gallery").each(function(i,v){
-			var numSlides = $(this).children().children("li").length;
-			$(this).css({'width': numSlides*443});
-		});
-
-
-		$('#slider-arrow-left').click(function(){
-			var marLL = parseFloat($(".active-slide").css("margin-left"));
-			if(marLL < 0){
-				$(".active-slide").animate({"margin-left": marLL+443}, 500, 'easeInOutQuart');
-			}
-		});
-		$('#slider-arrow-right').click(function(){
-			var marL = parseFloat($(".active-slide").css("margin-left"));
-			var slideLength = (($(".active-slide").children().children("li").length)*(-443))+443;
-			console.log(slideLength);
-			console.log(marL);
-			if(marL !== slideLength){
-				$(".active-slide").animate({"margin-left": marL-443}, 500, 'easeInOutQuart');
-			}
-		});
-
-		$(".slider-option").click(function(){
-			var $option = $(this);
-			var $sel = $("#"+$(this).data("rec"));
-			if(!$option.hasClass("active-opt")){ //if its not the selected option
-				var $active = $("#"+$(".active-opt").data("rec"));
-				var actId = $(".active-opt").attr("id");
-				$(".active-opt").removeClass(actId+"-visited");
-				$active.children().children('.options-dark').stop().animate({opacity: 1}); // do mouse out effects for previous active option
-				$active.children().children('.options-diamond').fadeOut();
-				$sel.children().children('.options-dark').css({opacity: 0}); // keep mouse over effects on selected option
-				$sel.children().children('.options-diamond').show();
-				$(".active-opt").removeClass("active-opt");
-				$option.addClass("active-opt");
-				$(".active-opt").addClass($(".active-opt").attr("id")+"-visited")
-			}
-
-			var item = $option.data("rec").substr(8);
-			var $gallery = $("#slider-"+item);
-			var $active = $(".active-slide");
-			if($option.hasClass("loaded")){ // if gallery is already loaded
-				if($gallery.attr("id") !== $(".active-slide").attr("id")){ // if selected is not active gallery
-					$active.fadeOut();
-					$active.removeClass("active-slide")
-					$gallery.animate({"margin-left":0}).addClass("active-slide").fadeIn();
-				}
-			}else{
-				$active.fadeOut();
-				$active.removeClass("active-slide");
-				$gallery.load("galleries.php "+"#hotel #hotel-"+item+" ul", function(){ // load gallery
-					$gallery.animate({"margin-left":0}).addClass("active-slide").fadeIn();
-					$option.addClass("loaded");
-					$gallery.find("img").each(function(){
-						var $cont = $(this).parents('li');
-						$(this).dilatation({container: $cont});
-						
-					});
-					var numSlides = $gallery.children().children("li").length;
-					$gallery.css({'width': numSlides*443});
-				});
-
-			}
-		});
-
-		$(".fancybox").fancybox();
 
 
 		/* END */
