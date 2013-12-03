@@ -197,12 +197,53 @@
 
 
 
+	var DoubleArrow = function(){
+		this.$bod = jQuery('body');
+		this.$arrows = this.$bod.find('.scroll-arrow-wrap');
+		this.$section = this.$bod.find('section').first();
+		this.init();
+	};
+
+	DoubleArrow.prototype = {
+		init: function(){
+			this.bindEvents();
+		},
+		bindEvents: function(){
+			var self = this;
+			this.$arrows.on({
+				click: function(){
+					self.nextSection();
+				},
+				mouseenter: function(){
+					self.animateArrows($(this));	
+				}
+			});
+		},
+		nextSection: function(){
+			var $next = this.$section.next();
+			this.$bod.scrollTo($next, 800, {easing:'easeInOutCirc'});
+			this.$section = $next;
+		},
+		animateArrows: function(elem){
+			$(elem).find('.scroll-big').animate({'margin-top': '50px', opacity: 0}, 400, 'easeInCubic', function(){
+				$(this).css({'margin-top': '-50px'}).delay(100).animate({'margin-top': '0', opacity: 1}, 400, 'easeInCubic');
+			} );
+			$(elem).find('.scroll-small').animate({'margin-top': '50px', opacity: 0}, 500, 'easeInCubic', function(){
+				$(this).css({'margin-top': '-50px'}).animate({'margin-top': '0', opacity: 1}, 500, 'easeInCubic');
+			} );
+		}
+	};
+
+
+
+
 
 
 
 	$(document).ready(function(){
 		var res = new Resizer();
 		var hotel = new HotelEffects();
+		var arrows = new DoubleArrow();
 
 		/* Home Slider */
 
@@ -324,7 +365,7 @@
 		});
 		/* END */
 		/*******************************************************************************/
-		/* Arrow navigation */
+		/* Arrow navigation 
 		$('.scroll-arrow-wrap').click(function(){
 			var section = $('#'+$(this).parents(".section").next('.section').attr("id"));
 			Parallax.utils.doSlide(section);
