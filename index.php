@@ -309,19 +309,45 @@ Every room in Vain is different but they all share the original architecture of 
                                                     </ul>
                                                 </div>
                                                 <div id="slider-leisure" class="option-gallery">
-
+                                                    <ul>
+                                                        <?php foreach(glob('./img/hotel/leisure/*.*') as $filename){ ?>
+                                                            <?php list($width, $height) = getimagesize($filename); ?>
+                                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                                        <?php } ?>
+                                                    </ul>
                                                 </div>
                                                 <div id="slider-rooms" class="option-gallery">
-                                                    
+                                                    <ul>
+                                                        <?php foreach(glob('./img/rooms/*.*') as $filename){ ?>
+                                                            <?php list($width, $height) = getimagesize($filename); ?>
+                                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                                        <?php } ?>
+                                                        
+                                                    </ul>
                                                 </div>
                                                 <div id="slider-bar" class="option-gallery">
-                                                    
+                                                    <ul>
+                                                        <?php foreach(glob('./img/hotel/bar/*.*') as $filename){ ?>
+                                                            <?php list($width, $height) = getimagesize($filename); ?>
+                                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                                        <?php } ?>
+                                                    </ul>
                                                 </div>
                                                 <div id="slider-patio" class="option-gallery">
-                                                    
+                                                    <ul>
+                                                        <?php foreach(glob('./img/hotel/patio/*.*') as $filename){ ?>
+                                                            <?php list($width, $height) = getimagesize($filename); ?>
+                                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                                        <?php } ?>
+                                                    </ul>
                                                 </div>
                                                 <div id="slider-terrace" class="option-gallery">
-                                                    
+                                                    <ul>
+                                                        <?php foreach(glob('./img/hotel/terrace/*.*') as $filename){ ?>
+                                                            <?php list($width, $height) = getimagesize($filename); ?>
+                                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                                        <?php } ?>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>

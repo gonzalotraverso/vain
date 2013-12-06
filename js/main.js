@@ -1,6 +1,7 @@
 (function(){
 	"use strict";
 
+
 	var Resizer = function(){
 		this.$win = jQuery(window);
 		this.$sections = jQuery("section");
@@ -33,13 +34,17 @@
 				}
 				if( (minH < self.winHeight ) && (maxH > self.winHeight ) ){
 					$section.height(self.winHeight);
-					if($section.hasClass("home")){
+					if($section.hasClass("home") && typeof this.$gallery != 'undefined'){
 						this.$gallery.height(self.winHeight);
 					}
 				}
 			});
 		}
 	};
+
+
+
+
 
 
 	/* HOTEL WAYPOINTS EFFECTS/ */
@@ -87,25 +92,27 @@
 
 		},
 		doAnimations: function(){
-			var self = this;
-			this.$info.fadeIn();
-			this.$sliderOpts.each(function(){
-				var $option = $(this);
-				var optLeft = parseInt($option.data('left'));
-				var optTop = parseInt($option.data('top'));
-				var dur = $option.data('duration');
-				$option.animate({'left': optLeft, 'top': optTop, 'opacity':1}, dur);
-			});
-			this.$sliderOpt.each(function(){
-				var $option = $(this);
-				var optLeft = parseInt($option.css('left'));
-				var optTop = parseInt($option.css('top'));
-				var dur = $option.data('duration');
-				if($option.hasClass("opt-top"))
-					$option.animate({top: (optTop+250)+"px", left: (optLeft-250)+"px", opacity: 1}, dur);
-				else
-					$option.animate({top: (optTop-250)+"px", left: (optLeft-250)+"px", opacity: 1}, dur);
-			});
+			if(this.$info.css('display') == 'none'){
+				var self = this;
+				this.$info.fadeIn();
+				this.$sliderOpts.each(function(){
+					var $option = $(this);
+					var optLeft = parseInt($option.data('left'));
+					var optTop = parseInt($option.data('top'));
+					var dur = $option.data('duration');
+					$option.animate({'left': optLeft, 'top': optTop, 'opacity':1}, dur);
+				});
+				this.$sliderOpt.each(function(){
+					var $option = $(this);
+					var optLeft = parseInt($option.css('left'));
+					var optTop = parseInt($option.css('top'));
+					var dur = $option.data('duration');
+					if($option.hasClass("opt-top"))
+						$option.animate({top: (optTop+250)+"px", left: (optLeft-250)+"px", opacity: 1}, dur);
+					else
+						$option.animate({top: (optTop-250)+"px", left: (optLeft-250)+"px", opacity: 1}, dur);
+				});
+			}
 		},
 		setUpGallery: function(){
 			var self = this;
@@ -167,14 +174,14 @@
 
 			var item = $option.data("rec").substr(8);
 			var $gallery = this.$galleries.siblings("#slider-"+item);
-			if($option.hasClass("loaded")){ // if gallery is already loaded
+			//if($option.hasClass("loaded")){ // if gallery is already loaded
 				if($gallery.attr("id") !== this.$activeSlide.attr("id")){ // if selected is not active gallery
 					this.$activeSlide.fadeOut();
 					this.$activeSlide.removeClass("active-slide");
 					$gallery.animate({"margin-left":0}).addClass("active-slide").fadeIn();
 					this.$activeSlide = $gallery;
 				}
-			}else{
+			/*}else{
 				console.log("entro");
 				this.$activeSlide.fadeOut();
 				this.$activeSlide.removeClass("active-slide");
@@ -191,12 +198,15 @@
 					$gallery.css({'width': numSlides*443});
 				});
 
-			}
+			}*/
 		}
 	};
 
 
 
+
+
+	/* DOUBLE ARROWS */
 	var DoubleArrow = function(){
 		this.$bod = jQuery('body');
 		this.$arrows = this.$bod.find('.scroll-arrow-wrap');
@@ -236,23 +246,80 @@
 
 
 
+	/* SECTIONS NAVIGATION *//*
+	var SecNav = function(){
+		this.$doc = jQuery(document);
+		this.$bod = jQuery('body');
+		this.$sections = this.$bod.find('section');
+		this.$firstSection = this.$sections.first();
+		this.$lastSection = this.$sections.last();
+		this.$section = null;
+		this.init();
+	};
+
+	SecNav.prototype = {
+		init: function(){
+			this.bindEvents();
+		},
+		bindEvents: function(){
+			var self = this;
+			this.$bod.on('mousewheel', function(event, delta){
+				self.scrollSec(event, delta);
+			});
+		},
+		sectionInView: function(){
+			var self = this;
+			var docTop = jQuery(document).scrollTop();
+			console.log(docTop);
+			this.$sections.each(function(){
+				var top = $(this).offset().top;
+				var bottom = top + $(this).height();
+				if (docTop >= top && docTop <= bottom){
+					self.$section = $(this);
+					return false;
+				}
+			});
+		},
+		scrollSec: function(e, d){
+			if ($('.no-scroll:hover').length == 0) {
+				this.sectionInView();
+				e.preventDefault();
+				if( d < 0 )
+					this.moveScroll(jQuery(this.$section.next()).attr('id');, 'down');
+				else
+					this.moveScroll(jQuery(this.$section.prev()).attr('id');, 'up');
+			}
+		},
+		moveScroll: function(section, dir){
+			if( (dir == 'up' && this.$section != 0) || (dir == 'down' && this.$section != this.$last) ){
+				console.log(section);
+				this.$bod.scrollTo($(section), 800, {easing:'easeInOutCirc'});
+			}
+
+		}
+	};*/
 
 
 
 
 	$(document).ready(function(){
-		var res = new Resizer();
-		var hotel = new HotelEffects();
-		var arrows = new DoubleArrow();
-
-		/* Home Slider */
-
 		$(".home-slider").bxSlider({
 			mode: "fade",
 			pager: false,
 			controls: false,
 			auto: true
 		});
+
+
+
+		var res = new Resizer();
+		var hotel = new HotelEffects();
+		var arrows = new DoubleArrow();
+		//var secnav = new SecNav();
+
+		/* Home Slider */
+
+		
 
 
 		/* END */
@@ -299,12 +366,8 @@
 	var Parallax = {
 			utils: {
 				doSlide: function(section) {
-					var top = section.position().top;/*
-					$('#section-wrapper').stop().animate({
-						top: -top
-					}, 600, 'linear', function() {
-						section.addClass('slided').siblings('div.section').removeClass('slided');
-					});*/
+					var top = section.position().top;
+					
 					$('body').stop().scrollTo(section, 800, {easing:'easeInOutCirc'});
 					section.addClass('slided').siblings('section.section').removeClass('slided');
 				}
@@ -363,25 +426,7 @@
 		$('.header-logo').click(function(){
 			Parallax.utils.doSlide($("#section-1"));
 		});
-		/* END */
-		/*******************************************************************************/
-		/* Arrow navigation 
-		$('.scroll-arrow-wrap').click(function(){
-			var section = $('#'+$(this).parents(".section").next('.section').attr("id"));
-			Parallax.utils.doSlide(section);
-		});
-
-
-		$('.scroll-arrow-wrap').hover(function(){
-			$(this).children('.scroll-big').animate({'margin-top': '50px', opacity: 0}, 400, 'easeInCubic', function(){
-				$(this).css({'margin-top': '-50px'}).delay(100).animate({'margin-top': '0', opacity: 1}, 400, 'easeInCubic');
-			} );
-			$(this).children('.scroll-small').animate({'margin-top': '50px', opacity: 0}, 500, 'easeInCubic', function(){
-				$(this).css({'margin-top': '-50px'}).animate({'margin-top': '0', opacity: 1}, 500, 'easeInCubic');
-			} );
-		}, function(){
-
-		});
+		
 		/* END */
 		/*******************************************************************************/
 		/* Waypoints - menu active */
@@ -503,7 +548,7 @@
 			$active.removeClass("active-event");
 			$(this).addClass("active-event");
 			var evH = $(this).find(".events-item-info").height();
-			$(this).find(".events-info").css({height: evH-50});
+			$(this).find(".events-info").css({height: evH-70});
 			$(this).find(".events-info").mCustomScrollbar({
 	            theme: "light-thin"
 	        });
@@ -533,9 +578,9 @@
 				$room.hover(function(){
 					if(!$room.hasClass("active-room")){
 						if($room.hasClass("rooms-closed")){
-							rright = '-450px';
+							var rright = '-450px';
 						}else{
-							rright = '-258px';
+							var rright = '-258px';
 						}
 						$roomG.stop().animate({left: '-642px'});
 						$roomI.stop().animate({right: rright});
@@ -543,9 +588,9 @@
 				}, function(){
 					if(!$room.hasClass("active-room")){
 						if($room.hasClass("rooms-closed")){
-							rright = '-480px';
+							var rright = '-480px';
 						}else{
-							rright = '-288px';
+							var rright = '-288px';
 						}
 						$roomG.stop().animate({left: '-672px'});
 						$roomI.stop().animate({right: rright});
@@ -568,13 +613,13 @@
 					$(".room-wrapper").children(".room").children(".room-info").css({"right": "-480px"});
 					$(".room-open").removeClass("room-open");			
 					if($(this).hasClass("top-room")){
-						$inactRooms = $(".bottom-room");
-						$actRooms = $(".top-room");
-						$openRoom = $(this).siblings(".top-room");
+						var $inactRooms = $(".bottom-room");
+						var $actRooms = $(".top-room");
+						var $openRoom = $(this).siblings(".top-room");
 					}else{
-						$inactRooms = $(".top-room");
-						$actRooms = $(".bottom-room");
-						$openRoom = $(this).siblings(".bottom-room");
+						var $inactRooms = $(".top-room");
+						var $actRooms = $(".bottom-room");
+						var $openRoom = $(this).siblings(".bottom-room");
 					}
 					$inactRooms.animate({height: "30%", width: "480px"}).addClass("rooms-closed");
 					$inactRooms.find(".room-badge").animate({top: "50%", "margin-top": "-55px"}, "easeInOutQuart");
