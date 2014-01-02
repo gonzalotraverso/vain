@@ -519,6 +519,7 @@
 			var infoH = -$info.parent().height()*0.37;
 			$info.attr('data-bottom', infoH);
 			$info.css({bottom: infoH});
+			
 		});
 
 
@@ -539,24 +540,29 @@
 		});
 
 		$(".events-items").click(function(){
+			var $item = $(this);
 			var $active = $(".active-event");
+			var $info = $item.find(".events-info");
+			var $itemInfo = $item.find(".events-item-info");
+			var evH = $itemInfo.height();
+			$info.css({height: evH-70});
 
 			$active.children(".events-gallery").stop().animate({top: $active.children(".events-gallery").data("top")});
-			$active.children(".events-item-info").stop().animate({bottom: $active.children(".events-item-info").data("bottom")}, function(){
+			$active.find(".events-item-info").stop().animate({bottom: $active.children(".events-item-info").data("bottom")}, function(){
 				$active.find(".events-info").mCustomScrollbar("destroy");
 			});
+			if(!$info.hasClass("mCustomScrollbar")){
+				$info.mCustomScrollbar({
+		            theme: "light-thin"
+		        });
+			}
 			$active.removeClass("active-event");
-			$(this).addClass("active-event");
-			var evH = $(this).find(".events-item-info").height();
-			$(this).find(".events-info").css({height: evH-70});
-			$(this).find(".events-info").mCustomScrollbar({
-	            theme: "light-thin"
-	        });
+			$item.addClass("active-event");
 
 
 			
-			var $evG = $(this).children(".events-gallery");
-			var $evI = $(this).children(".events-item-info");
+			var $evG = $item.children(".events-gallery");
+			var $evI = $item.children(".events-item-info");
 			$evG.stop().animate({top: 0}, 600, "easeInOutQuart");
 			$evI.stop().animate({bottom: 0}, 600, "easeInOutQuart");
 		});
