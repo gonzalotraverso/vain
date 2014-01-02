@@ -48,9 +48,9 @@ $otherTZ  = new DateTimeZone('America/Argentina/Buenos_Aires');
 $datetime->setTimezone($otherTZ); 
 $time = $datetime->format('H:i');?>
                     <h3><span id="fixed-location-diamond"></span>Vain Boutique Hotel</h3>
-                    <p>PALERMO * Buenos Aires * Argentina</p><br>
+                    <p>PALERMO SOHO - Buenos Aires - Argentina</p><br>
                     <p>THAMES 2226 | Te. (5411) 4776-8246 (VAIN)<br>
-                        info@vainuniverse.com<br>
+                        <a href="info@vainuniverse.com">info@vainuniverse.com</a><br>
                         ----<br>
                         Local Time: <?php echo $time; ?></p>
                     <ul>
@@ -371,15 +371,15 @@ Every room in Vain is different but they all share the original architecture of 
                                 <h4><span class="services-bullet"></span><span class="bold-text">INTERNAL</span></h4><br><br>
                                 <p><span>Check-In: <span class="bold-text">1:30 PM</span> </p><br> 
                                 <p>Check-Out: <span class="bold-text">11 AM</span> </span></p><br> 
-                                <p>- Safety</p><br>
+                                <p>- 24 hour security</p><br>
                                 <p>- Breakfast</p><br>
                                 <p>- 24-hour reception</p><br>
                                 <p>- Bilingual staff</p><br>
-                                <p>- Safe boxes in the rooms</p><br>
-                                <p>- Central heating &amp; air-conditioning</p><br>
+                                <p>- Laptop Size safe boxes in the room (Free of charge)</p><br>
+                                <p>- Individually controlled Central Heating &amp; Air- Conditioning</p><br>
                                 <p>- Rooms with Jacuzzi</p><br>
                                 <p>- Complementary Wi-Fi Internet access throughout the entire hotel. Printer and fax.</p><br>
-                                <p>- TV LC/LED</p><br>
+                                <p>- TV LCD/LED</p><br>
                                 <p>- PC with free internet access</p><br>
                                 <p>- Every room equipped with: Fast internet connection, Cable TV, telephone service, mini-bar, hairdryer and amenities. </p><br>
                                 <p>- Terrace</p><br>
@@ -452,7 +452,7 @@ Every room in Vain is different but they all share the original architecture of 
                                         <p>- Breakfast, Lunches, Coffee Breaks, Brunches, etc.<p>
 
                                         <p>Companies who trusted Vain: Lóreal Argentina, Unilever, Ingram, Carlson Wagonlit travel Argentina, Cía. Industrial Cervecera, E-Volution, Estee Lauder cosméticos, Conarco Argentina, Indufem, Microsoft, Daeva S.A., Lomo Cine, Mia Films, Flight Centre Group Travel, Bioderma, Furlong, Proaxion, Synergia, <p>
-                                        
+                                        <a href="http://www.vainuniverse.com/descargas/VAIN_Boutique_Hotel_Blueprints.pdf">View Plans</a>
                                     </div>
                                 </div>
                             </div>
@@ -516,7 +516,7 @@ Every room in Vain is different but they all share the original architecture of 
                                 <div class="room-info">
                                     <div class="room-gallery-controls"></div>
                                     <div class="room-info-info">
-                                        <h4><span class="services-bullet"></span>&nbsp;&nbsp;V<span> ROOM</span> Senior</h4><br>
+                                        <h4><span class="services-bullet"></span>&nbsp;&nbsp;V<span> ROOM</span> - Senior</h4><br>
                                         <p>These rooms are aproximately 25 m2 / 270 ft2. Located in the first and second level of the hotel, facing to a central or back garden/patio, or to the front of the hotel.<br>
                                             This room has a king-size or twin beds, with the option of adding an extra bed and a crib (please check before you reserve).<br>
                                             It could be possible to have a balcony or big windows.<br>
@@ -539,7 +539,7 @@ Every room in Vain is different but they all share the original architecture of 
                                 <div class="room-info">
                                     <div class="room-gallery-controls"></div>
                                     <div class="room-info-info">
-                                        <h4><span class="services-bullet"></span>&nbsp;&nbsp;A<span> ROOM</span> Junior</h4><br>
+                                        <h4><span class="services-bullet"></span>&nbsp;&nbsp;A<span> ROOM</span> - Junior</h4><br>
                                         <p>These rooms are approximately 22 m2 / 237 ft2. Located in the first level of the hotel, facing to a central or back garden/patio.<br>
                                         This room has a King-size or twin beds, with the option of adding an extra bed and a crib (please check before you reserve). It could be possible to have a big window or a backyard private area. <br>
                                         Bathroom with shower.
@@ -562,7 +562,7 @@ Every room in Vain is different but they all share the original architecture of 
                                 <div class="room-info">
                                     <div class="room-gallery-controls"></div>
                                     <div class="room-info-info">
-                                        <h4><span class="services-bullet"></span>&nbsp;&nbsp;I<span> ROOM</span> Superior</h4><br>
+                                        <h4><span class="services-bullet"></span>&nbsp;&nbsp;I<span> ROOM</span> - Superior</h4><br>
                                         <p>These rooms are approximately 18m2 / 216 ft2.<br>
                                         Located in the first level of the hotel, facing to a central garden/patio. A room with one Double/Full bed-size bed only, with the possible option of adding an extra bed or crib (please check before you reserve).<br>
                                         Bathroom with shower.</p>
@@ -584,7 +584,7 @@ Every room in Vain is different but they all share the original architecture of 
                                 <div class="room-info">
                                     <div class="room-gallery-controls"></div>
                                     <div class="room-info-info">
-                                        <h4><span class="services-bullet"></span>&nbsp;&nbsp;N<span> ROOM</span> Standard</h4><br>
+                                        <h4><span class="services-bullet"></span>&nbsp;&nbsp;N<span> ROOM</span> - Standard</h4><br>
                                         <p>These rooms are approximately 18m2 / 194 ft2.<br>
                                         Located in the inferior level of the hotel, facing to a central garden/patio. A room with Double/ Full bed-size bed only, with the possible option of adding an extra bed or crib (please check before you reserve).<br>
                                         Bathroom with shower.</p>
@@ -640,7 +640,7 @@ Every room in Vain is different but they all share the original architecture of 
                             </ul>
                             <div class="small-print">
                                 <p>(<span class="pink">*</span>) These rates are per room and per night, expressed in US dollars and do not include taxes - 21%. <br>
-                                    <span class="light">Extra beds - only available in A and V categories - will have a charge of USD 60 + takes per night.</span></p>
+                                    <span class="light">Extra beds - only available in A and V categories - will have a charge of USD 60 + taxes per night.</span></p>
                                     <img src="img/logos-tarjetas.png">
                                     <p id="cancelation">Cancelation and No-Show Policies</p>
                             </div>
