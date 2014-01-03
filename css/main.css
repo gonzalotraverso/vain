@@ -279,12 +279,12 @@ h2{font-weight: 400}
 #fixed-location-arrow{height: 109px; width: 14px; background: url(../img/location-fixed.png); top: 50%; margin-top: -54px; position: absolute; left: 15px}
 #fixed-location-left-content ul{width: 100%; padding-top: 20px}
 #fixed-location-left-content ul li{height: 28px; width: 32px; padding-right: 6px; float: left;}
-#fixed-location-left-content ul li a{height: 100%; width: 100%; display: block; background-image: url(../img/location-sprite.png); opacity: 0.5; -moz-transition:opacity 0.5s; -webkit-transition:opacity 0.5s; -o-transition:opacity 0.5s; transition:opacity 0.5s;}
+#fixed-location-left-content ul li a{height: 100%; width: 100%; display: block; background-image: url(../img/location-sprite.png); /*opacity: 0.5;*/ -moz-transition:opacity 0.5s; -webkit-transition:opacity 0.5s; -o-transition:opacity 0.5s; transition:opacity 0.5s;}
 #loc-skype{background-position: center -28px }
 #loc-trip{background-position: center -56px }
 #loc-eco{background-position: center -84px }
 #loc-gay{background-position: center -112px }
-#fixed-location-left-content ul li a:hover{opacity: 1}
+#fixed-location-left-content ul li a:hover{opacity: 0.75}
 
 
 
