@@ -410,13 +410,14 @@ nav li p:hover .menu-diamond{opacity: 1}
 
 #location{height: 33px; line-height: 33px; width: 289px; border: 1px #fff solid; clear: both; padding: 0 12px; cursor: pointer; margin-top: 20px}
 #location img{float: left; padding-top: 8px}
-#location p{line-height: 33px; padding-left: 19px; font-weight: bold; font-size: 14px}
+#location a{line-height: 33px; padding-left: 19px; font-weight: bold; font-size: 14px; color: #fff; text-decoration: none;}
 
+#loc-pop-wrapper{display:none;}
 #location-popup-wrapper{position: absolute; width: 858px; height: 564px; z-index: 500; top: 30px; display: none;}
 .loc-pop-cross{width: 100%; height: 31px}
 .loc-cross{cursor: pointer; width: 31px; height: 100%; float: right; background: #fff url(../img/location-cross.jpg) no-repeat center center}
-#location-popup-content{background: #fff; padding: 8px}
-#location-map{width: 842px; height: 358px}
+#location-popup-content{background: #fff; width: 858px; }
+#location-map{width: 100%; height: 358px; margin: 0;}
 #location-info{padding-top: 10px; height: 124px; font-size: 12px; font-weight: 300; color: #2e2e2e; }
 #location-info h2{font-weight: bold; font-size: 14px}
 #location-direction{float: left; border-right: 1px #ebebeb solid; width: 637px; padding-right: 45px}

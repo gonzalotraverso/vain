@@ -204,7 +204,24 @@ $time = $datetime->format('H:i');?>
             <section class="hotel article section" id="section-2">
                 <div class="article-padding">
                     <div class="hotel-padding">
-                        <div id="location-popup-wrapper">
+                        <div id="loc-pop-wrapper">
+                            <div id="location-popup-content">
+                                <div id="location-map"></div>
+                                <div id="location-info">
+                                    <div id="location-direction">
+                                        <h2><span class="location-diamond"></span>LOCATION:</h2><br>
+                                        <p>FROM EZEIZA INTERNATIONAL AIRPORT: Take the freeway until the General Paz exit- take the General Paz in direction to Rio de la Plata - take Lugones until Sarmiento exit - Follow Sarmiento Ave. until it becomes Thames and look for 2226.</p><br>
+                                        <p>FROM J.NEWERY AIRPORT: Take Av. Costanera Norte R. Obligado towards downtown - take the Sarmiento exit  - Follow Sarmiento Ave. until it becomes Thames and look for 2226.</p>
+                                    </div>
+                                    <div id="location-gps">
+                                        <h2><span class="location-diamond"></span>GPS</h2><br>
+                                        <p>S34º 35.020´<br>
+                                        W058º 25.493´</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div id="location-popup-wrapper">
                             <div class="loc-pop-cross">
                                 <div class="loc-cross"></div>
                             </div>
@@ -224,7 +241,7 @@ $time = $datetime->format('H:i');?>
                                 </div>
                             </div>
                             <div id="location-bottom"></div>
-                        </div>
+                        </div> -->
                         <div class="hotel-wrapper">
                             <div class="article-relative">
                                 <div class="hotel-info-wrap">
@@ -236,18 +253,9 @@ $time = $datetime->format('H:i');?>
                                     <p>In Vain you will feel the Buenos Aires of the early 20th century, in contrast with avant-garde design touches, where every detail was carefully planned to provide the guest with a unique experience.
                                         <br><br>
 Every room in Vain is different but they all share the original architecture of the building, classic and modern furniture, and above all, design in every single detail.</p>
-                                   <!--  <p> Lorem Ipsum ha sido el texto de relleno est&aacute;ndar de las industrias desde el a&ntilde;o 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido us&oacute; una galer&iacute;a de textos y los mezcl&oacute; de tal manera que logr&oacute; hacer un libro de textos especimen. No s&oacute;lo sobrevivi&oacute; 500 a&ntilde;os, sino que tambien ingres&oacute; como texto de relleno en documentos electr&oacute;nicos, quedando esencialmente igual al original.<br>
-                                        <br><span>&quot;Tambien ingres&oacute; como texto de relleno en documentos electr&oacute;nicos, quedando esencialmente igual al original.&quot;</span></p> -->
-                                    <!-- <ul>
-                                        <li><img src="img/ten-rivers.png"></li>
-                                        <li><img src="img/bs-ciudad.png"></li>
-                                        <li><img src="img/fodors.png"></li>
-                                        <li><img src="img/time-out.png"></li>
-                                        <li><img src="img/lonely-planet.png"></li>
-                                        <li><img src="img/smalls-hotels.png"></li>
-                                    </ul> -->
+                                   
                                     <div id="location">
-                                        <img src="img/location.png"><p>LOCATION &amp; DISTANCES &gt;&gt;</p>
+                                        <img src="img/location.png"><a id="inline" href="#location-popup-content">LOCATION &amp; DISTANCES &gt;&gt;</a>
                                     </div>
                                 </div>
                                 <div class="hotel-gallery">

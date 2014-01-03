@@ -64,6 +64,7 @@
 
 	HotelEffects.prototype = {
 		init: function(){
+			this.setUpLoc();
 			this.setUpGallery();
 			this.bindEvents();
 		},
@@ -199,6 +200,41 @@
 				});
 
 			}*/
+		},
+		setUpLoc: function(){
+			var self = this;
+			$("a#inline").fancybox({
+				'hideOnContentClick': true,
+				afterShow : function(){
+					self.initMap();
+				}
+			});
+		},
+		initMap: function(){
+			var noPoi = [
+	            {
+	                featureType: "poi.business",
+	                stylers: [
+	                  { visibility: "off" }
+	                ]   
+	              }
+	            ];
+
+            var loc_map = document.getElementById('location-map');
+            var map_options = {
+              center: new google.maps.LatLng(-34.5848,-58.426303),
+              zoom: 15,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              styles: noPoi
+            }
+            var map = new google.maps.Map(loc_map, map_options)
+            var iconBase = 'http://www.wearegrossa.com/vain/img/';
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(-34.5848,-58.426303),
+              map: map,
+              icon: {url: iconBase + 'marker.png', anchor: new google.maps.Point(16, 34)},
+              //shadow: iconBase + 'schools_maps.shadow.png'
+            });
 		}
 	};
 
