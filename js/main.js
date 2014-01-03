@@ -222,7 +222,7 @@
 
             var loc_map = document.getElementById('location-map');
             var map_options = {
-              center: new google.maps.LatLng(-34.5848,-58.426303),
+              center: new google.maps.LatLng(-34.583694,-58.424887),
               zoom: 15,
               mapTypeId: google.maps.MapTypeId.ROADMAP,
               styles: noPoi
@@ -230,9 +230,9 @@
             var map = new google.maps.Map(loc_map, map_options)
             var iconBase = 'http://www.wearegrossa.com/vain/img/';
             var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(-34.5848,-58.426303),
+              position: new google.maps.LatLng(-34.583694,-58.424887),
               map: map,
-              icon: {url: iconBase + 'marker.png', anchor: new google.maps.Point(16, 34)},
+              icon: {url: iconBase + 'marker.png', anchor: new google.maps.Point(32, 66)},
               //shadow: iconBase + 'schools_maps.shadow.png'
             });
 		}

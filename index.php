@@ -210,6 +210,7 @@ $time = $datetime->format('H:i');?>
                                 <div id="location-info">
                                     <div id="location-direction">
                                         <h2><span class="location-diamond"></span>LOCATION:</h2><br>
+                                        <p>Driving directions:</p><br>
                                         <p>FROM EZEIZA INTERNATIONAL AIRPORT: Take the freeway until the General Paz exit- take the General Paz in direction to Rio de la Plata - take Lugones until Sarmiento exit - Follow Sarmiento Ave. until it becomes Thames and look for 2226.</p><br>
                                         <p>FROM J.NEWERY AIRPORT: Take Av. Costanera Norte R. Obligado towards downtown - take the Sarmiento exit  - Follow Sarmiento Ave. until it becomes Thames and look for 2226.</p>
                                     </div>
@@ -817,17 +818,17 @@ Every room in Vain is different but they all share the original architecture of 
             
             var map_canvas = document.getElementById('map_canvas');
             var map_options = {
-              center: new google.maps.LatLng(-34.5848,-58.426303),
+              center: new google.maps.LatLng(-34.583694,-58.424887),
               zoom: 15,
               mapTypeId: google.maps.MapTypeId.ROADMAP,
               styles: noPoi
             }
-            var map = new google.maps.Map(map_canvas, map_options)
+            var map = new google.maps.Map(map_canvas, map_options);
             var iconBase = 'http://www.wearegrossa.com/vain/img/';
             var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(-34.5848,-58.426303),
+              position: new google.maps.LatLng(-34.583694,-58.424887),
               map: map,
-              icon: {url: iconBase + 'marker.png', anchor: new google.maps.Point(16, 34)},
+              icon: {url: iconBase + 'marker.png', anchor: new google.maps.Point(32, 66)},
               //shadow: iconBase + 'schools_maps.shadow.png'
             });
           }
