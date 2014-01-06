@@ -235,6 +235,37 @@
               icon: {url: iconBase + 'marker.png', anchor: new google.maps.Point(32, 66)},
               //shadow: iconBase + 'schools_maps.shadow.png'
             });
+
+
+            var locations = [
+		      ['<h4>Subte linea D - Estación Plaza Italia</h4>', -34.580966,-58.420562],
+		      ['<h4>Polo Científico y Tecnológico</h4>', -34.582530, -58.428876],
+		      ['<h4>US Embassy</h4>', -34.573626, -58.418469],
+		      ['<h4>La Rural</h4>', -34.578316, -58.420626],
+		      ['<h4>Plaza Italia</h4>', -34.581311, -58.420862]
+		    ];
+
+
+		    var infowindow = new google.maps.InfoWindow({
+		      maxWidth: 160
+		    });
+
+		    var newMarker;
+
+		    for (var i = 0; i < locations.length; i++) {
+		    	newMarker = new google.maps.Marker({
+	        		position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			        map: map,
+		      	});
+
+		      	google.maps.event.addListener(newMarker, 'click', (function(newMarker, i) {
+			        return function() {
+			          infowindow.setContent(locations[i][0]);
+			          infowindow.open(map, newMarker);
+			        }
+			      })(newMarker, i));
+		    };
+            
 		}
 	};
 
