@@ -624,9 +624,11 @@ nav li p:hover .menu-diamond{opacity: 1}
 .rates ul li div h3 span{font-weight: 400; color: #85acc2}
 .rates ul li div p{font-size: 37px; font-weight: 300; color: #969696; /*line-height: 78px*/}
 .rates ul li div p .bold-text{color: #cacaca}
-.rates ul li div a{height: 12px; width: 72px; display: block; background: url(../img/7up.png) no-repeat -278px -44px; margin: 0 auto; margin-top: 36px}
+.rates ul li div a{margin-top: 36px; text-decoration: none; display: block; -webkit-transition: opacity 0.5s; -moz-transition: opacity 0.5s; -o-transition: opacity 0.5s;}
+.rates ul li div a:hover{opacity: 0.7;}
+/*.rates ul li div a{height: 12px; width: 72px; display: block; background: url(../img/7up.png) no-repeat -278px -44px; margin: 0 auto; margin-top: 36px}
 .rates ul li div a:hover{background-position: -278px -56px;}
-.rates ul li div a:active{background-position: -278px -68px;}
+.rates ul li div a:active{background-position: -278px -68px;}*/
 
 .rate-type{font-size: 12px !important}
 

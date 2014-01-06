@@ -621,7 +621,7 @@ Every room in Vain is different but they all share the original architecture of 
                                         <h3><span class="rates-diamond-title"></span>&nbsp;&nbsp;&nbsp;V<span>ROOM</span>&nbsp;&nbsp;&nbsp;<span class="rates-diamond-title"></span></h3>
                                         <p>USD<span class="bold-text">248</span><span class="pink">*</span></p>
                                         <p class="rate-type">Senior</p>
-                                        <a href=""></a>
+                                        <a href="https://www.thebookingbutton.co.uk/properties/vainboutiquedirect" class="pink">Book Online (Best available rates)</a>
                                     </div>
                                 </li>
                                 <li>
@@ -629,7 +629,7 @@ Every room in Vain is different but they all share the original architecture of 
                                         <h3><span class="rates-diamond-title"></span>&nbsp;&nbsp;&nbsp;A<span>ROOM</span>&nbsp;&nbsp;&nbsp;<span class="rates-diamond-title"></span></h3>
                                         <p>USD<span class="bold-text">224</span><span class="pink">*</span></p>
                                         <p class="rate-type">Junior</p>
-                                        <a href=""></a>
+                                        <a href="https://www.thebookingbutton.co.uk/properties/vainboutiquedirect" class="pink">Book Online (Best available rates)</a>
                                     </div>
                                 </li>
                                 <li>
@@ -637,7 +637,7 @@ Every room in Vain is different but they all share the original architecture of 
                                         <h3><span class="rates-diamond-title"></span>&nbsp;&nbsp;&nbsp;I<span>ROOM</span>&nbsp;&nbsp;&nbsp;<span class="rates-diamond-title"></span></h3>
                                         <p>USD<span class="bold-text">190</span><span class="pink">*</span></p>
                                         <p class="rate-type">Superior</p>
-                                        <a href=""></a>
+                                        <a href="https://www.thebookingbutton.co.uk/properties/vainboutiquedirect" class="pink">Book Online (Best available rates)</a>
                                     </div>
                                 </li>
                                 <li class="last">
@@ -645,7 +645,7 @@ Every room in Vain is different but they all share the original architecture of 
                                         <h3><span class="rates-diamond-title"></span>&nbsp;&nbsp;&nbsp;N<span>ROOM</span>&nbsp;&nbsp;&nbsp;<span class="rates-diamond-title"></span></h3>
                                         <p>USD<span class="bold-text">156</span><span class="pink">*</span></p>
                                         <p class="rate-type">Standard</p>
-                                        <a href=""></a>
+                                        <a href="https://www.thebookingbutton.co.uk/properties/vainboutiquedirect" class="pink">Book Online (Best available rates)</a>
                                     </div>
                                 </li>
                             </ul>
