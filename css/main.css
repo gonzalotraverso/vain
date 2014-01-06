@@ -573,7 +573,7 @@ nav li p:hover .menu-diamond{opacity: 1}
 #vroom{background: url(../img/vroom.jpg); top: -480px; left: 0; display: none; opacity: 0}
 #aroom{background: url(../img/aroom.jpg); top: 0; right: -480px; display: none; opacity: 0}
 #iroom{background: url(../img/iroom.jpg); bottom: 0; left: -480px; display: none; opacity: 0}
-#nroom{background: url(../img/nroom.jpg); bottom: -480px; right: 0; display: none; opacity: 0}
+#nroom{background-image: url(../img/nroom.jpg); bottom: -480px; right: 0; display: none; opacity: 0; background-position: right top}
 .active-room{cursor: auto;}
 
 .room-gallery{width: 672px; height: 52%; overflow: hidden;  position: relative;}
