@@ -309,7 +309,7 @@ Every room in Vain is different but they all share the original architecture of 
                                         <div id="slider-arrow-right" class="slider-arrows"></div>
                                         <div class="hotel-slider">
                                             <div class="hotel-slider-reangle">
-                                                <div id="slider-fachade" class="active-slide option-gallery">
+                                                <div id="slider-fachade" class="option-gallery">
                                                     <ul>
                                                         <?php foreach(glob('./img/hotel/fachade/*.*') as $filename){ ?>
                                                             <?php list($width, $height) = getimagesize($filename); ?>
@@ -321,7 +321,7 @@ Every room in Vain is different but they all share the original architecture of 
                                                     <ul>
                                                         <?php foreach(glob('./img/hotel/leisure/*.*') as $filename){ ?>
                                                             <?php list($width, $height) = getimagesize($filename); ?>
-                                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                                        <li><a class="fancybox" rel="hotel-leisure" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
                                                         <?php } ?>
                                                     </ul>
                                                 </div>
@@ -329,7 +329,7 @@ Every room in Vain is different but they all share the original architecture of 
                                                     <ul>
                                                         <?php foreach(glob('./img/rooms/*.*') as $filename){ ?>
                                                             <?php list($width, $height) = getimagesize($filename); ?>
-                                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                                        <li><a class="fancybox" rel="hotel-rooms" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
                                                         <?php } ?>
                                                         
                                                     </ul>
@@ -338,7 +338,7 @@ Every room in Vain is different but they all share the original architecture of 
                                                     <ul>
                                                         <?php foreach(glob('./img/hotel/bar/*.*') as $filename){ ?>
                                                             <?php list($width, $height) = getimagesize($filename); ?>
-                                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                                        <li><a class="fancybox" rel="hotel-bar" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
                                                         <?php } ?>
                                                     </ul>
                                                 </div>
@@ -346,7 +346,7 @@ Every room in Vain is different but they all share the original architecture of 
                                                     <ul>
                                                         <?php foreach(glob('./img/hotel/patio/*.*') as $filename){ ?>
                                                             <?php list($width, $height) = getimagesize($filename); ?>
-                                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                                        <li><a class="fancybox" rel="hotel-patio" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
                                                         <?php } ?>
                                                     </ul>
                                                 </div>
@@ -354,7 +354,7 @@ Every room in Vain is different but they all share the original architecture of 
                                                     <ul>
                                                         <?php foreach(glob('./img/hotel/terrace/*.*') as $filename){ ?>
                                                             <?php list($width, $height) = getimagesize($filename); ?>
-                                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                                        <li><a class="fancybox" rel="hotel-terrace" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
                                                         <?php } ?>
                                                     </ul>
                                                 </div>
@@ -518,7 +518,7 @@ Every room in Vain is different but they all share the original architecture of 
                                     <ul>
                                         <?php foreach(glob('./img/rooms/habitaciones/V/*.*') as $filename){ ?>
                                             <?php list($width, $height) = getimagesize($filename); ?>
-                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                        <li><a class="fancybox" rel="rooms-v" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
                                         <?php } ?>
                                     </ul>
                                 </div>
@@ -541,7 +541,7 @@ Every room in Vain is different but they all share the original architecture of 
                                     <ul>
                                         <?php foreach(glob('./img/rooms/habitaciones/A/*.*') as $filename){ ?>
                                             <?php list($width, $height) = getimagesize($filename); ?>
-                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                        <li><a class="fancybox" rel="rooms-a" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
                                         <?php } ?>
                                     </ul>
                                 </div>
@@ -564,7 +564,7 @@ Every room in Vain is different but they all share the original architecture of 
                                     <ul>
                                         <?php foreach(glob('./img/rooms/habitaciones/I/*.*') as $filename){ ?>
                                             <?php list($width, $height) = getimagesize($filename); ?>
-                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                        <li><a class="fancybox" rel="rooms-i" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
                                         <?php } ?>
                                     </ul>
                                 </div>
@@ -586,7 +586,7 @@ Every room in Vain is different but they all share the original architecture of 
                                     <ul>
                                         <?php foreach(glob('./img/rooms/habitaciones/N/*.*') as $filename){ ?>
                                             <?php list($width, $height) = getimagesize($filename); ?>
-                                        <li><a class="fancybox" rel="hotel-fachade" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
+                                        <li><a class="fancybox" rel="rooms-n" href="<?php echo $filename; ?>"><img src="<?php echo $filename; ?>" style="height: <?php echo $height; ?>px; width: <?php echo $width; ?>px"></a></li>
                                         <?php } ?>
                                     </ul>
                                 </div>
