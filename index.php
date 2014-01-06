@@ -309,7 +309,7 @@ Every room in Vain is different but they all share the original architecture of 
                                         <div id="slider-arrow-right" class="slider-arrows"></div>
                                         <div class="hotel-slider">
                                             <div class="hotel-slider-reangle">
-                                                <div id="slider-fachade" class="option-gallery">
+                                                <div id="slider-fachade" class="active-slide option-gallery">
                                                     <ul>
                                                         <?php foreach(glob('./img/hotel/fachade/*.*') as $filename){ ?>
                                                             <?php list($width, $height) = getimagesize($filename); ?>
@@ -462,6 +462,8 @@ Every room in Vain is different but they all share the original architecture of 
 
                                         <p>Companies who trusted Vain: Lóreal Argentina, Unilever, Ingram, Carlson Wagonlit travel Argentina, Cía. Industrial Cervecera, E-Volution, Estee Lauder cosméticos, Conarco Argentina, Indufem, Microsoft, Daeva S.A., Lomo Cine, Mia Films, Flight Centre Group Travel, Bioderma, Furlong, Proaxion, Synergia, <p>
                                         <a href="http://www.vainuniverse.com/descargas/VAIN_Boutique_Hotel_Blueprints.pdf">View Plans</a>
+                                        <br>
+                                        <br>
                                     </div>
                                 </div>
                             </div>
