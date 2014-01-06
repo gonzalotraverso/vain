@@ -586,7 +586,7 @@ nav li p:hover .menu-diamond{opacity: 1}
 .room-gallery-controls ul{float: right;}
 .room-info h4{font-size: 14px; color: #b9e1f8; }
 .room-info h4 span{font-weight: 400}
-.room-info-info{padding: 0 50px;}
+.room-info-info{padding: 0 50px; overflow: auto;}
 .room-info p{color: #6e6e6e; font-size: 13px}
 
 .rooms-closed .room-gallery{left: -672px}

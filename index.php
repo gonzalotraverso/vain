@@ -526,7 +526,7 @@ Every room in Vain is different but they all share the original architecture of 
                                 </div>
                                 <div class="room-info">
                                     <div class="room-gallery-controls"></div>
-                                    <div class="room-info-info">
+                                    <div class="room-info-info no-scroll">
                                         <h4><span class="services-bullet"></span>&nbsp;&nbsp;V<span> ROOM</span> - Senior</h4><br>
                                         <p>These rooms are aproximately 25 m2 / 270 ft2. Located in the first and second level of the hotel, facing to a central or back garden/patio, or to the front of the hotel.<br>
                                             This room has a king-size or twin beds, with the option of adding an extra bed and a crib (please check before you reserve).<br>
@@ -549,7 +549,7 @@ Every room in Vain is different but they all share the original architecture of 
                                 </div>
                                 <div class="room-info">
                                     <div class="room-gallery-controls"></div>
-                                    <div class="room-info-info">
+                                    <div class="room-info-info no-scroll">
                                         <h4><span class="services-bullet"></span>&nbsp;&nbsp;A<span> ROOM</span> - Junior</h4><br>
                                         <p>These rooms are approximately 22 m2 / 237 ft2. Located in the first level of the hotel, facing to a central or back garden/patio.<br>
                                         This room has a King-size or twin beds, with the option of adding an extra bed and a crib (please check before you reserve). It could be possible to have a big window or a backyard private area. <br>
@@ -572,7 +572,7 @@ Every room in Vain is different but they all share the original architecture of 
                                 </div>
                                 <div class="room-info">
                                     <div class="room-gallery-controls"></div>
-                                    <div class="room-info-info">
+                                    <div class="room-info-info no-scroll">
                                         <h4><span class="services-bullet"></span>&nbsp;&nbsp;I<span> ROOM</span> - Superior</h4><br>
                                         <p>These rooms are approximately 18m2 / 216 ft2.<br>
                                         Located in the first level of the hotel, facing to a central garden/patio. A room with one Double/Full bed-size bed only, with the possible option of adding an extra bed or crib (please check before you reserve).<br>
@@ -594,7 +594,7 @@ Every room in Vain is different but they all share the original architecture of 
                                 </div>
                                 <div class="room-info">
                                     <div class="room-gallery-controls"></div>
-                                    <div class="room-info-info">
+                                    <div class="room-info-info no-scroll">
                                         <h4><span class="services-bullet"></span>&nbsp;&nbsp;N<span> ROOM</span> - Standard</h4><br>
                                         <p>These rooms are approximately 18m2 / 194 ft2.<br>
                                         Located in the inferior level of the hotel, facing to a central garden/patio. A room with Double/ Full bed-size bed only, with the possible option of adding an extra bed or crib (please check before you reserve).<br>

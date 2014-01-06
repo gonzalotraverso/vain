@@ -281,8 +281,10 @@
 	};
 
 
-
-	/* SECTIONS NAVIGATION *//*
+	//
+	// SECTIONS NAVIGATION 
+	// CURRENTLY NOT IMPLEMENTED
+	//
 	var SecNav = function(){
 		this.$doc = jQuery(document);
 		this.$bod = jQuery('body');
@@ -321,9 +323,9 @@
 				this.sectionInView();
 				e.preventDefault();
 				if( d < 0 )
-					this.moveScroll(jQuery(this.$section.next()).attr('id');, 'down');
+					this.moveScroll(jQuery(this.$section.next()).attr('id'), 'down');
 				else
-					this.moveScroll(jQuery(this.$section.prev()).attr('id');, 'up');
+					this.moveScroll(jQuery(this.$section.prev()).attr('id'), 'up');
 			}
 		},
 		moveScroll: function(section, dir){
@@ -333,8 +335,121 @@
 			}
 
 		}
-	};*/
+	};
 
+
+
+	// 
+	// ROOMS EFFECTS
+	// 
+	// 	
+	var RoomsEvents = function(){
+		this.$rooms = jQuery(".rooms");
+		this.$roomWrapper = this.$rooms.find(".room-wrapper");
+		this.$bottomRooms = this.$rooms.find(".bottom-room");
+		this.$topRooms = this.$rooms.find(".top-room");
+		this.init();
+	};
+
+	RoomsEvents.prototype = {
+		init: function(){
+			this.hover = false;
+
+			this.$roomWrapper.addClass('rooms-closed');
+
+			this.setGalleries();
+			this.bindEvents();
+		},
+		bindEvents: function(){
+			var self = this;
+			this.$rooms.waypoint(function(){
+				self.parallaxEffects();
+			});
+			this.$roomWrapper.on({
+				mouseenter: function(){
+					self.hoverRoom(jQuery(this), !self.hover);
+				},
+				mouseleave: function(){
+					self.hoverRoom(jQuery(this), self.hover);
+				},
+				click: function(){
+					self.openGallery(jQuery(this));
+				}
+			});
+		},
+		setGalleries: function(){
+			this.$roomWrapper.each(function(){
+				var $info = jQuery(this).find(".room-info");
+				var $infoText = $info.find(".room-info-info");
+				var infoHeight = ( jQuery(this).height() * 0.48 ) - 34;
+				$infoText.height(infoHeight);
+			});
+			
+		},
+		parallaxEffects: function(){
+			this.$roomWrapper.show();
+			this.$rooms.find('#vroom').animate({'opacity': 1, 'top': 0});
+			this.$rooms.find('#aroom').animate({'opacity': 1, 'right': 0});
+			this.$rooms.find('#iroom').animate({'opacity': 1, 'left': 0});
+			this.$rooms.find('#nroom').animate({'opacity': 1, 'bottom':0});
+		},
+		hoverRoom: function(elem, hov){
+			var $roomG = elem.find(".room-gallery");
+			var $roomI = elem.find(".room-info");
+
+			if(!elem.hasClass('active-room')){
+				if(hov){
+					var right = (elem.hasClass('rooms-closed')) ? '-450px' : '-258px';
+					var left = '-642px';
+				}else{
+					var right = (elem.hasClass('rooms-closed')) ? '-480px' : '-288px';
+					var left = '-672px';
+				}
+				$roomG.stop().animate({left: left});
+				$roomI.stop().animate({right: right});
+			}	
+		},
+		openGallery: function(elem){
+			var $active = this.$rooms.find(".active-room");
+			if(!elem.is($active)){
+
+				// close active and assign active-room class to this
+				$active.find(".room-gallery").stop().animate({left: '-672px'});
+				$active.find(".room-info").stop().animate({right: '-480px'});
+				$active.removeClass("active-room");
+				elem.addClass("active-room");
+
+				var $roomOpen = this.$rooms.find(".room-open");
+				$roomOpen.removeClass("room-open");
+				this.$roomWrapper.find(".room-info").css({"right": "-480px"});
+
+				if(elem.hasClass("top-room")){
+					var $inactRooms = this.$bottomRooms;
+					var $actRooms = this.$topRooms;
+					var $openRoom = elem.siblings(".top-room");
+				}else{
+					var $inactRooms = this.$topRooms;
+					var $actRooms = this.$bottomRooms;
+					var $openRoom = elem.siblings(".bottom-room");
+				}
+				$inactRooms.animate({height: "30%", width: "480px"}).addClass("rooms-closed");
+				$inactRooms.find(".room-badge").animate({top: "50%", "margin-top": "-55px"}, "easeInOutQuart");
+				$actRooms.removeClass("rooms-closed");
+				elem.animate({width: "70%", height: "70%"});
+				$openRoom.addClass("room-open").animate({width: "30%", height: "70%"});
+				$openRoom.find(".room-badge").animate({left: "50%", "margin-left": "-55px"}, "easeInOutQuart");
+
+				var $roomG = elem.find(".room-gallery");
+				var $roomI = elem.find(".room-info");
+				$roomG.stop().animate({left: 0}, 400, "easeInOutQuart");
+				$roomI.stop().animate({right: 0}, 400, "easeInOutQuart");
+
+				var $info = elem.find(".room-info-info");
+				if(!$info.hasClass('mCustomScrollbar'))
+					$info.mCustomScrollbar();
+			}
+		}
+	};
 
 
 
@@ -352,6 +467,7 @@
 		var hotel = new HotelEffects();
 		var arrows = new DoubleArrow();
 		//var secnav = new SecNav();
+		var rooms = new RoomsEvents();
 
 		/* Home Slider */
 
@@ -385,13 +501,6 @@
 		});
 		
 
-		$('.rooms').waypoint(function(){
-			$('.room-wrapper').show();
-			$('#vroom').animate({'opacity': 1, 'top': 0});
-			$('#aroom').animate({'opacity': 1, 'right': 0});
-			$('#iroom').animate({'opacity': 1, 'left': 0});
-			$('#nroom').animate({'opacity': 1, 'bottom':0});
-		});
 
 		/* END */
 		/*******************************************************************************/
@@ -487,48 +596,7 @@
 
 
 		
-		/* END */
-		/*******************************************************************************/
-		/* location popup */
-		var noPoi = [
-	            {
-	                featureType: "poi.business",
-	                stylers: [
-	                  { visibility: "off" }
-	                ]   
-	              }
-	            ];
-
-
-		function initializeMap() {
-	            
-	            var loc_map = document.getElementById('location-map');
-	            var map_options = {
-	              center: new google.maps.LatLng(-34.5848,-58.426303),
-	              zoom: 15,
-	              mapTypeId: google.maps.MapTypeId.ROADMAP,
-	              styles: noPoi
-	            }
-	            var map = new google.maps.Map(loc_map, map_options)
-	            var iconBase = 'http://www.wearegrossa.com/vain/img/';
-	            var marker = new google.maps.Marker({
-	              position: new google.maps.LatLng(-34.5848,-58.426303),
-	              map: map,
-	              icon: {url: iconBase + 'marker.png', anchor: new google.maps.Point(16, 34)},
-	              //shadow: iconBase + 'schools_maps.shadow.png'
-	            });
-	          }
-
-		$("#location").on('click', function(){
-			$('#location-popup-wrapper').fadeIn(function(){
-				initializeMap();
-			});
-		});
-
-		$("#location-popup-wrapper").find(".loc-cross").on('click', function(){
-			$("#location-popup-wrapper").fadeOut();
-		});
-
+		
 
 		
 
@@ -603,82 +671,7 @@
 			$evI.stop().animate({bottom: 0}, 600, "easeInOutQuart");
 		});
 
-		/* END */
-		/*******************************************************************************/
-		/* ROOMS EFFECTS */
-
-
-			$(".room-wrapper").addClass("rooms-closed")
-
-			$(".room-wrapper").each(function(){
-				var $room = $(this);
-				var $roomG = $room.children().children(".room-gallery");
-				var $roomI = $room.children().children(".room-info");
-				
-
-				
-				$room.hover(function(){
-					if(!$room.hasClass("active-room")){
-						if($room.hasClass("rooms-closed")){
-							var rright = '-450px';
-						}else{
-							var rright = '-258px';
-						}
-						$roomG.stop().animate({left: '-642px'});
-						$roomI.stop().animate({right: rright});
-					}
-				}, function(){
-					if(!$room.hasClass("active-room")){
-						if($room.hasClass("rooms-closed")){
-							var rright = '-480px';
-						}else{
-							var rright = '-288px';
-						}
-						$roomG.stop().animate({left: '-672px'});
-						$roomI.stop().animate({right: rright});
-					}
-				});
-			});
-
-
-			
-
-			$(".room-wrapper").click(function(){
-				var $active = $(".active-room");
-				if(!$(this).hasClass("active-room")){
-
-					$active.children().children(".room-gallery").stop().animate({left: '-672px'});
-					$active.children().children(".room-info").stop().animate({right: '-480px'});
-					$active.removeClass("active-room");
-					$(this).addClass("active-room");
-					
-					$(".room-wrapper").children(".room").children(".room-info").css({"right": "-480px"});
-					$(".room-open").removeClass("room-open");			
-					if($(this).hasClass("top-room")){
-						var $inactRooms = $(".bottom-room");
-						var $actRooms = $(".top-room");
-						var $openRoom = $(this).siblings(".top-room");
-					}else{
-						var $inactRooms = $(".top-room");
-						var $actRooms = $(".bottom-room");
-						var $openRoom = $(this).siblings(".bottom-room");
-					}
-					$inactRooms.animate({height: "30%", width: "480px"}).addClass("rooms-closed");
-					$inactRooms.find(".room-badge").animate({top: "50%", "margin-top": "-55px"}, "easeInOutQuart");
-					$actRooms.removeClass("rooms-closed");
-					$(this).animate({width: "70%", height: "70%"});
-					$openRoom.addClass("room-open").animate({width: "30%", height: "70%"});
-					$openRoom.find(".room-badge").animate({left: "50%", "margin-left": "-55px"}, "easeInOutQuart")
-
-
-					var $roomG = $(this).children().children(".room-gallery");
-					var $roomI = $(this).children().children(".room-info");
-					$roomG.stop().animate({left: 0}, 400, "easeInOutQuart");
-					$roomI.stop().animate({right: 0}, 400, "easeInOutQuart");
-				}
-				
-			});
-
+		
 
 		/* END */
 		/*******************************************************************************/
